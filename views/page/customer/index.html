@@ -1,0 +1,66 @@
+{% extends "layouts/base.html" %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <!-- <div class="alert alert-success alert-dismissible" v-if="deleteMessage.success">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <h4><i class="icon fa fa-check"></i> </h4>
+                
+            </div> -->
+            <div class="box box-default color-palette-box">
+                <div class="box-header with-border">
+                    <h3 class="box-title"><i class="fa fa-tag"></i> customers</h3>
+
+                    <div class="box-tools">
+                        <form action="/admin/customers" method="GET">
+                            <div class="input-group input-group-sm" style="width: 150px;">
+                                <input type="text" name="search" class="form-control pull-right" placeholder="Search"> 
+
+                                <div class="input-group-btn">
+                                    <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <a class="btn btn-primary" href="/admin/customer/create" style="margin-bottom: 10px;">Add customer</a>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for customer in users %}
+                            <tr>
+                                <td>{{ loop.index }}</td>
+                                <td>{{ customer.id }}</td>
+                                <td>{{ customer.name }}</td>
+                                <td>{{ customer.email }}</td>
+                                <td>
+                                    <!-- Update Document  -->
+                                    <!-- <a href="/" title="View customer"><button class="btn btn-info btn-xs"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a> -->
+                                    <a href="/admin/customer/edit/{{ customer.id }}" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i> Edit</a>
+                                    <form method="POST" action="/admin/delete_customer/{{ customer.id }}" accept-charset="UTF-8" style="display:inline">
+                                        <button type="submit" class="btn btn-danger btn-xs" title="Delete customer" onclick="return confirm('Confirm delete')"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
+                                    </form>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    <div class="box-footer clearfix">
+                        {% include "partial/pagination.html" with {'paginator': paginator} %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

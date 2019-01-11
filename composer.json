@@ -1,0 +1,39 @@
+{
+    "name": "myzpolice/petruk",
+    "description": "Sistem Pengambilan Keputasan Metode WP",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ghazi Fadil",
+            "email": "ghazifardhan@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "php": ">=5.6",
+        "symfony/http-foundation": "^4.0",
+        "symfony/http-kernel": "^4.0",
+        "symfony/routing": "^4.0",
+        "symfony/templating": "^4.0",
+        "twig/twig": "^2.0",
+        "illuminate/database": "^5.6",
+        "symfony/dotenv": "^4.0",
+        "josantonius/session": "^1.1",
+        "eddieantonio/bcrypt": "0.3.0",
+        "filp/whoops": "^2.2",
+        "illuminate/filesystem": "5.7.*",
+        "illuminate/translation": "5.7.*",
+        "illuminate/validation": "5.7.*",
+        "illuminate/pagination": "^5.7"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/",
+            "Controller\\": "app/controllers/",
+            "Model\\": "app/models/",
+            "Validator\\": "app/validators/",
+            "Petruk\\": "app/lib/"
+        }
+    }
+}

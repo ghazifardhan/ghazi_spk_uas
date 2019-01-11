@@ -1,0 +1,31 @@
+<div class="box-body">
+    <div class="form-group {{ errors.first('name', 'has-error') }}">
+        <label>Name</label>
+        <input type="text" name="name" class="form-control" id="inputError" placeholder="Name" value="{{ customer.name }}" required>
+        {{ errors.first('name', '<span class="help-block">:message</span>') | raw }}
+    </div>
+    <div class="form-group {{ errors.first('email', 'has-error') }}">
+        <label>Email</label>
+        <input type="email" name="email" class="form-control" id="inputError" placeholder="email" value="{{ customer.email }}" required>
+        {{ errors.first('email', '<span class="help-block">:message</span>') | raw }}
+    </div>    
+    <div class="form-group {{ errors.first('password', 'has-error') }}">
+        <label>Password</label>
+        <input type="password" name="password" class="form-control" id="inputError" placeholder="password" required>
+        {{ errors.first('password', '<span class="help-block">:message</span>') | raw }}
+        {% if edit %}
+        <span class="help-block">Leave blank if you dont want to change the password</span>
+        {% endif  %}
+    </div>    
+    {% if edit %}
+    <div class="form-group {{ errors.first('role', 'has-error') }}">
+        <label>Role</label>
+        <input type="text" name="role" class="form-control" id="inputError" placeholder="role" disabled value="{{ customer.role.role.name }}">
+        {{ errors.first('role', '<span class="help-block">:message</span>') | raw }}
+    </div>    
+    {% endif %}
+</div>
+
+<div class="box-footer">
+    <input class="btn btn-primary" type="submit" value="Create">
+</div>

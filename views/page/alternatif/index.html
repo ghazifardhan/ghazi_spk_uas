@@ -1,0 +1,53 @@
+{% extends "layouts/base.html" %}
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">Alternatif</div>
+
+                <div class="card-body">
+
+                    {% if app.request.get('success') is defined %}
+                        {% if app.request.get('success') == "1" %}
+                        <div class="alert alert-success" role="alert">{{ app.request.get('message') }}</div>
+                        {% else %}
+                        <div class="alert alert-danger" role="alert">{{ app.request.get('message') }}</div>
+                        {% endif %}
+                    {% endif %}
+
+                    {{ request.get('message') }}
+                    
+                    <a class="btn btn-info" style="margin-bottom: 10px;" href="/alternatif/create" role="button">+ Tambah Alternatif</a>
+
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Alternatif</th>
+                                <th>Options</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for item in alternatifs %}
+                            <tr>
+                                <td>{{ loop.index }}</td>
+                                <td><a href="/alternatif/{{ item.id }}/show">{{ item.alternatif }}</a></td>
+                                <td>
+                                    <div class="btn-group" role="group">
+                                        <a class="btn btn-warning btn-sm" href="/alternatif/edit/{{ item.id }}" role="button">Edit</a>
+                                        <form action="/alternatif/delete/{{ item.id }}" method="POST">
+                                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                        </form>
+                                    </div>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

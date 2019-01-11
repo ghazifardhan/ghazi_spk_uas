@@ -1,0 +1,15 @@
+<div class="box-body">
+    <div class="form-group {{ errors.first('alternatif', 'has-error') }}">
+        <label>Alternatif</label>
+        <input type="text" name="alternatif" class="form-control" id="inputError" placeholder="Alternatif" value="{{ alternatif.alternatif }}" required>
+        {{ errors.first('alternatif', '<span class="help-block">:message</span>') | raw }}
+    </div>
+</div>
+
+<div class="box-footer">
+    {% if edit %}
+    <input class="btn btn-primary" type="submit" value="Update">
+    {% else %}
+    <input class="btn btn-primary" type="submit" value="Tambah">
+    {% endif %}
+</div>

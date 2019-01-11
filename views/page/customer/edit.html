@@ -1,0 +1,22 @@
+{% extends "layouts/base.html" %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">
+                        customer
+                    </h3>
+                </div>
+
+                <form method="POST" action="/admin/update_customer/{{ customer.id }}" accept-charset="UTF-8" enctype="multipart/form-data">
+
+                    {% include "page/customer/form.html" with {'edit': true } %}
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

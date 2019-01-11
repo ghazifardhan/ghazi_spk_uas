@@ -1,0 +1,106 @@
+{% extends "layouts/base.html" %}
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">Weighted Product</div>
+
+                <div class="card-body">
+                    <h5>Matriks</h5>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Alternatif</th>
+                                {% for item in kriterias %}
+                                <th>{{item.kriteria}}</th>
+                                {% endfor %}
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for item in alternatifs %}
+                            <tr>
+                                <td>{{ loop.index }}</td>
+                                <td>{{ item.alternatif }}</td>
+                                {% for row in item.altToKriteria %}
+                                <td>{{ row.nilai }}</td>
+                                {% endfor %}
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+
+                    <h5>Perbaikan Bobot</h5>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Kriteria</th>
+                                <th>Perbaikan Bobot</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for item in kriterias %}
+                            <tr>
+                                <td>{{ loop.index }}</td>
+                                <td>{{ item.kriteria }}</td>
+                                <td>{{ item.weight_fixing }}</td>
+                            </tr>
+                            {% endfor %}
+                            <tr>
+                                <td colspan="2">Total</td>
+                                <td>{{ data.totalValueFixing }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h5>Perhitungan Vektor</h5>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Alternatif</th>
+                                <th>Vektor</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for item in alternatifs %}
+                            <tr>
+                                <td>{{ loop.index }}</td>
+                                <td>{{ item.alternatif }}</td>
+                                <td>{{ item.vektor }}</td>
+                            </tr>
+                            {% endfor %}
+                            <tr>
+                                <td colspan="2">Total</td>
+                                <td>{{ data.totalValueVektor }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h5>Perangkingan</h5>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Alternatif</th>
+                                <th>Nilai Rangking</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for item in newAlternatifs %}
+                            <tr>
+                                <td>{{ loop.index }}</td>
+                                <td>{{ item.alternatif }}</td>
+                                <td>{{ item.ranking_value }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

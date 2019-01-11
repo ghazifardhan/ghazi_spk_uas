@@ -1,0 +1,22 @@
+{% extends "layouts/base.html" %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">
+                        Customer
+                    </h3>
+                </div>
+
+                <form method="POST" action="/admin/create_customer" accept-charset="UTF-8" enctype="multipart/form-data">
+                    
+                    {% include "page/customer/form.html" with {'edit': false } %}
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
